@@ -3,7 +3,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class ConvBlock(nn.Module):
-    """ 基础卷积块，包含 Conv + BN + ReLU """
     def __init__(self, in_channels, out_channels, dropout=0.3):
         super(ConvBlock, self).__init__()
         self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1, bias=False)
@@ -19,7 +18,6 @@ class ConvBlock(nn.Module):
         return x
 
 class UNetResNet(nn.Module):
-    """ U-Net + ResNet 变体 (带 Skip Connections) """
     def __init__(self, num_classes=10):
         super(UNetResNet, self).__init__()
         self.encoder1 = ConvBlock(3, 32)  # (N, 32, 32, 32)
@@ -31,7 +29,7 @@ class UNetResNet(nn.Module):
         self.encoder3 = ConvBlock(64, 128)
         self.pool3 = nn.MaxPool2d(2)      # (N, 128, 4, 4)
 
-        self.bottleneck = ConvBlock(128, 256)  # 最深层 (N, 256, 4, 4)
+        self.bottleneck = ConvBlock(128, 256)  # (N, 256, 4, 4)
 
         # Decoder
         self.upconv3 = nn.ConvTranspose2d(256, 128, kernel_size=2, stride=2)
@@ -43,7 +41,6 @@ class UNetResNet(nn.Module):
         self.upconv1 = nn.ConvTranspose2d(64, 32, kernel_size=2, stride=2)
         self.decoder1 = ConvBlock(32 + 32, 32)
 
-        # 分类头
         self.global_avg_pool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc = nn.Linear(32, num_classes)
 
@@ -85,4 +82,4 @@ def unet_resnet():
 if __name__ == "__main__":
     model = unet_resnet()
     param_count = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"Model has {param_count / 1e6:.2f}M parameters")  # 预计 4.8M
+    print(f"Model has {param_count / 1e6:.2f}M parameters")
