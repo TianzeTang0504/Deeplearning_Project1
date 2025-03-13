@@ -24,8 +24,8 @@ for file in batch_files:
     merged_data[b'data'].append(batch[b'data'])
     merged_data[b'labels'].extend(batch[b'labels'])
 
-merged_data[b'data'] = np.vstack(merged_data[b'data'])  # (50000, 3072)
-merged_data[b'labels'] = np.array(merged_data[b'labels'])  # (50000,)
+merged_data[b'data'] = np.vstack(merged_data[b'data'])
+merged_data[b'labels'] = np.array(merged_data[b'labels'])
 
 images = merged_data[b'data'].reshape(-1, 3, 32, 32)
 
@@ -33,5 +33,5 @@ np.save("images.npy", images)
 np.save("labels.npy", merged_data[b'labels'])
 
 print("Saved!")
-print("Images shape:", images.shape)  # (50000, 32, 32, 3)
-print("Labels shape:", merged_data[b'labels'].shape)  # (50000,)
+print("Images shape:", images.shape)
+print("Labels shape:", merged_data[b'labels'].shape)
