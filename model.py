@@ -70,7 +70,6 @@ class UNetResNet(nn.Module):
         d1 = torch.cat([d1, e1], dim=1)
         d1 = self.decoder1(d1)
 
-        # 全局池化 + 全连接
         out = self.global_avg_pool(d1)
         out = torch.flatten(out, 1)
         out = self.fc(out)
