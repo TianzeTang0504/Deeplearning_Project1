@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from torch.utils.data import Subset
 import torchvision.transforms as transforms
 from model import unet_resnet
-from model_resnet import resnet18_custom
+from deep_resnet import resnet18_custom
 from torch.utils.data import Dataset
 from torchvision.transforms import ToPILImage
 from tqdm import tqdm
