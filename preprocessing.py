@@ -10,7 +10,8 @@ batch_files = ["./data/deep-learning-spring-2025-project-1/cifar-10-python/cifar
                "./data/deep-learning-spring-2025-project-1/cifar-10-python/cifar-10-batches-py/data_batch_2", 
                "./data/deep-learning-spring-2025-project-1/cifar-10-python/cifar-10-batches-py/data_batch_3", 
                "./data/deep-learning-spring-2025-project-1/cifar-10-python/cifar-10-batches-py/data_batch_4", 
-               "./data/deep-learning-spring-2025-project-1/cifar-10-python/cifar-10-batches-py/data_batch_5"
+               "./data/deep-learning-spring-2025-project-1/cifar-10-python/cifar-10-batches-py/data_batch_5",
+               "./data/deep-learning-spring-2025-project-1/cifar-10-python/cifar-10-batches-py/test_batch"
 ]
 
 merged_data = {
