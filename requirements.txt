@@ -1,2 +1,4 @@
 python == 3.9.19
 torch == 2.4.1
+tqdm == 4.66.5
+numpy == 1.26.3
